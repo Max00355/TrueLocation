@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10D20596205F3DF7008CDA1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D20595205F3DF7008CDA1C /* AppDelegate.swift */; };
+		10D20598205F3DF7008CDA1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D20597205F3DF7008CDA1C /* ViewController.swift */; };
+		10D2059B205F3DF7008CDA1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D20599205F3DF7008CDA1C /* Main.storyboard */; };
+		10D2059D205F3DF7008CDA1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D2059C205F3DF7008CDA1C /* Assets.xcassets */; };
+		10D205A0205F3DF7008CDA1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D2059E205F3DF7008CDA1C /* LaunchScreen.storyboard */; };
+		10D205AB205F3DF7008CDA1C /* TrulocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D205AA205F3DF7008CDA1C /* TrulocTests.swift */; };
+		10D205B6205F3DF7008CDA1C /* TrulocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D205B5205F3DF7008CDA1C /* TrulocUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		10D205A7205F3DF7008CDA1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10D2058A205F3DF7008CDA1C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10D20591205F3DF7008CDA1C;
+			remoteInfo = Truloc;
+		};
+		10D205B2205F3DF7008CDA1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 10D2058A205F3DF7008CDA1C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10D20591205F3DF7008CDA1C;
+			remoteInfo = Truloc;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		10D20592205F3DF7008CDA1C /* Truloc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Truloc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D20595205F3DF7008CDA1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10D20597205F3DF7008CDA1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		10D2059A205F3DF7008CDA1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		10D2059C205F3DF7008CDA1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10D2059F205F3DF7008CDA1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		10D205A1205F3DF7008CDA1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10D205A6205F3DF7008CDA1C /* TrulocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrulocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D205AA205F3DF7008CDA1C /* TrulocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrulocTests.swift; sourceTree = "<group>"; };
+		10D205AC205F3DF7008CDA1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10D205B1205F3DF7008CDA1C /* TrulocUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrulocUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D205B5205F3DF7008CDA1C /* TrulocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrulocUITests.swift; sourceTree = "<group>"; };
+		10D205B7205F3DF7008CDA1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10D2058F205F3DF7008CDA1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10D205A3205F3DF7008CDA1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10D205AE205F3DF7008CDA1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10D20589205F3DF7008CDA1C = {
+			isa = PBXGroup;
+			children = (
+				10D20594205F3DF7008CDA1C /* Truloc */,
+				10D205A9205F3DF7008CDA1C /* TrulocTests */,
+				10D205B4205F3DF7008CDA1C /* TrulocUITests */,
+				10D20593205F3DF7008CDA1C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10D20593205F3DF7008CDA1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10D20592205F3DF7008CDA1C /* Truloc.app */,
+				10D205A6205F3DF7008CDA1C /* TrulocTests.xctest */,
+				10D205B1205F3DF7008CDA1C /* TrulocUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		10D20594205F3DF7008CDA1C /* Truloc */ = {
+			isa = PBXGroup;
+			children = (
+				10D20595205F3DF7008CDA1C /* AppDelegate.swift */,
+				10D20597205F3DF7008CDA1C /* ViewController.swift */,
+				10D20599205F3DF7008CDA1C /* Main.storyboard */,
+				10D2059C205F3DF7008CDA1C /* Assets.xcassets */,
+				10D2059E205F3DF7008CDA1C /* LaunchScreen.storyboard */,
+				10D205A1205F3DF7008CDA1C /* Info.plist */,
+			);
+			path = Truloc;
+			sourceTree = "<group>";
+		};
+		10D205A9205F3DF7008CDA1C /* TrulocTests */ = {
+			isa = PBXGroup;
+			children = (
+				10D205AA205F3DF7008CDA1C /* TrulocTests.swift */,
+				10D205AC205F3DF7008CDA1C /* Info.plist */,
+			);
+			path = TrulocTests;
+			sourceTree = "<group>";
+		};
+		10D205B4205F3DF7008CDA1C /* TrulocUITests */ = {
+			isa = PBXGroup;
+			children = (
+				10D205B5205F3DF7008CDA1C /* TrulocUITests.swift */,
+				10D205B7205F3DF7008CDA1C /* Info.plist */,
+			);
+			path = TrulocUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10D20591205F3DF7008CDA1C /* Truloc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10D205BA205F3DF7008CDA1C /* Build configuration list for PBXNativeTarget "Truloc" */;
+			buildPhases = (
+				10D2058E205F3DF7008CDA1C /* Sources */,
+				10D2058F205F3DF7008CDA1C /* Frameworks */,
+				10D20590205F3DF7008CDA1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Truloc;
+			productName = Truloc;
+			productReference = 10D20592205F3DF7008CDA1C /* Truloc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		10D205A5205F3DF7008CDA1C /* TrulocTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10D205BD205F3DF7008CDA1C /* Build configuration list for PBXNativeTarget "TrulocTests" */;
+			buildPhases = (
+				10D205A2205F3DF7008CDA1C /* Sources */,
+				10D205A3205F3DF7008CDA1C /* Frameworks */,
+				10D205A4205F3DF7008CDA1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10D205A8205F3DF7008CDA1C /* PBXTargetDependency */,
+			);
+			name = TrulocTests;
+			productName = TrulocTests;
+			productReference = 10D205A6205F3DF7008CDA1C /* TrulocTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		10D205B0205F3DF7008CDA1C /* TrulocUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10D205C0205F3DF7008CDA1C /* Build configuration list for PBXNativeTarget "TrulocUITests" */;
+			buildPhases = (
+				10D205AD205F3DF7008CDA1C /* Sources */,
+				10D205AE205F3DF7008CDA1C /* Frameworks */,
+				10D205AF205F3DF7008CDA1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				10D205B3205F3DF7008CDA1C /* PBXTargetDependency */,
+			);
+			name = TrulocUITests;
+			productName = TrulocUITests;
+			productReference = 10D205B1205F3DF7008CDA1C /* TrulocUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10D2058A205F3DF7008CDA1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Frankie Primerano";
+				TargetAttributes = {
+					10D20591205F3DF7008CDA1C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					10D205A5205F3DF7008CDA1C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 10D20591205F3DF7008CDA1C;
+					};
+					10D205B0205F3DF7008CDA1C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 10D20591205F3DF7008CDA1C;
+					};
+				};
+			};
+			buildConfigurationList = 10D2058D205F3DF7008CDA1C /* Build configuration list for PBXProject "Truloc" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10D20589205F3DF7008CDA1C;
+			productRefGroup = 10D20593205F3DF7008CDA1C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10D20591205F3DF7008CDA1C /* Truloc */,
+				10D205A5205F3DF7008CDA1C /* TrulocTests */,
+				10D205B0205F3DF7008CDA1C /* TrulocUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10D20590205F3DF7008CDA1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D205A0205F3DF7008CDA1C /* LaunchScreen.storyboard in Resources */,
+				10D2059D205F3DF7008CDA1C /* Assets.xcassets in Resources */,
+				10D2059B205F3DF7008CDA1C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10D205A4205F3DF7008CDA1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10D205AF205F3DF7008CDA1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10D2058E205F3DF7008CDA1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D20598205F3DF7008CDA1C /* ViewController.swift in Sources */,
+				10D20596205F3DF7008CDA1C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10D205A2205F3DF7008CDA1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D205AB205F3DF7008CDA1C /* TrulocTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10D205AD205F3DF7008CDA1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10D205B6205F3DF7008CDA1C /* TrulocUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		10D205A8205F3DF7008CDA1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10D20591205F3DF7008CDA1C /* Truloc */;
+			targetProxy = 10D205A7205F3DF7008CDA1C /* PBXContainerItemProxy */;
+		};
+		10D205B3205F3DF7008CDA1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10D20591205F3DF7008CDA1C /* Truloc */;
+			targetProxy = 10D205B2205F3DF7008CDA1C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		10D20599205F3DF7008CDA1C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10D2059A205F3DF7008CDA1C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		10D2059E205F3DF7008CDA1C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10D2059F205F3DF7008CDA1C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		10D205B8205F3DF7008CDA1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10D205B9205F3DF7008CDA1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10D205BB205F3DF7008CDA1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FMX33SJB33;
+				INFOPLIST_FILE = Truloc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = frankieprimerano.Truloc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		10D205BC205F3DF7008CDA1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FMX33SJB33;
+				INFOPLIST_FILE = Truloc/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = frankieprimerano.Truloc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		10D205BE205F3DF7008CDA1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FMX33SJB33;
+				INFOPLIST_FILE = TrulocTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = frankieprimerano.TrulocTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Truloc.app/Truloc";
+			};
+			name = Debug;
+		};
+		10D205BF205F3DF7008CDA1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FMX33SJB33;
+				INFOPLIST_FILE = TrulocTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = frankieprimerano.TrulocTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Truloc.app/Truloc";
+			};
+			name = Release;
+		};
+		10D205C1205F3DF7008CDA1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FMX33SJB33;
+				INFOPLIST_FILE = TrulocUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = frankieprimerano.TrulocUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Truloc;
+			};
+			name = Debug;
+		};
+		10D205C2205F3DF7008CDA1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FMX33SJB33;
+				INFOPLIST_FILE = TrulocUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = frankieprimerano.TrulocUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Truloc;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10D2058D205F3DF7008CDA1C /* Build configuration list for PBXProject "Truloc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10D205B8205F3DF7008CDA1C /* Debug */,
+				10D205B9205F3DF7008CDA1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10D205BA205F3DF7008CDA1C /* Build configuration list for PBXNativeTarget "Truloc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10D205BB205F3DF7008CDA1C /* Debug */,
+				10D205BC205F3DF7008CDA1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10D205BD205F3DF7008CDA1C /* Build configuration list for PBXNativeTarget "TrulocTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10D205BE205F3DF7008CDA1C /* Debug */,
+				10D205BF205F3DF7008CDA1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10D205C0205F3DF7008CDA1C /* Build configuration list for PBXNativeTarget "TrulocUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10D205C1205F3DF7008CDA1C /* Debug */,
+				10D205C2205F3DF7008CDA1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10D2058A205F3DF7008CDA1C /* Project object */;
+}
