@@ -7,68 +7,55 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 import CoreMotion
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var distanceFromObject: UILabel!
-    @IBOutlet weak var zDirectionOfObject: UILabel! // Up or down
-    let altimeter = CMAltimeter()
-    var startAltitude : Float?
-    var currentAltitude : Float?
-    var waited = 0 // Number of tries before recording real values;
-    let waitReading = 3 // How many checks to make before recording altitude
+    @IBOutlet weak var map: MKMapView!
+
+    var locationManager: CLLocationManager!
+    var altitudeManager: CMAltimeter!
+    var relativeAltitude: Float?
+    var currentCoordinates: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.startGetCoordinates()
+        self.startGetRelativeAltitude()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func getAltitude(_ sender: UIButton) {
-        self.waited = 0;
-        self.startAltitude = 0;
-        self.currentAltitude = 0;
-        let hasBarometer = CMAltimeter.isRelativeAltitudeAvailable()
-        self.distanceFromObject.text = "Getting information..."
-        if(hasBarometer) {
-            print("Starting Altitude Updates \(hasBarometer)")
-            self.altimeter.startRelativeAltitudeUpdates(to: OperationQueue.current!, withHandler: { (altitudeData:CMAltitudeData?, error:Error?) in
-                if(self.waited >= self.waitReading) {
-                    
-                    if(self.startAltitude == nil) {
-                        self.startAltitude = altitudeData?.relativeAltitude.floatValue
-                    } else {
-                        self.currentAltitude = altitudeData?.relativeAltitude.floatValue
-                    }
-                    if(self.startAltitude != nil && self.currentAltitude != nil) {
-                        let sa = self.startAltitude!
-                        let ca = self.currentAltitude!
-                        let difference = round(sa - ca)
-                        print("\(ca) \(sa) \(difference)")
-                        if(difference < 0) {
-                            self.zDirectionOfObject.text = "Down"
-                        } else if(difference > 0){
-                            self.zDirectionOfObject.text = "Up"
-                        } else {
-                            self.zDirectionOfObject.text = "Level"
-                        }
-                        
-                        self.distanceFromObject.text = "\(Int(abs(difference)))m"
-                        
-                    }
-                } else {
-                    self.waited = self.waited + 1
-                    print("\(self.waited)")
-                }
+    
+    
+    func startGetRelativeAltitude() {
+        altitudeManager = CMAltimeter()
+        if(CMAltimeter.isRelativeAltitudeAvailable()) {
+            altitudeManager.startRelativeAltitudeUpdates(to: OperationQueue.current!, withHandler: { (data, error) in
+                let relativeAltitude = data?.relativeAltitude.floatValue
+                self.relativeAltitude = relativeAltitude
+                print(relativeAltitude!)
             })
-        } else {
-            self.distanceFromObject.text = "No Barometer found :/"
         }
+    }
+    
+    func startGetCoordinates() {
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestAlwaysAuthorization()
+        if(CLLocationManager.locationServicesEnabled()) {
+            print("Started Getting Coordinates")
+            self.locationManager.startUpdatingLocation()
+        } else {
+            print("Location Services not enabled")
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let latitude = locations.last!.coordinate.latitude
+        let longitude = locations.last!.coordinate.longitude
+        self.currentCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        print("\(latitude) \(longitude)")
     }
     
 }
