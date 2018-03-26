@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1034DAFA20694BF8007FA356 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 1034DAF920694BF7007FA356 /* assets */; };
+		1034DAFE206986E7007FA356 /* PinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1034DAFD206986E7007FA356 /* PinLocation.swift */; };
 		10D20596205F3DF7008CDA1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D20595205F3DF7008CDA1C /* AppDelegate.swift */; };
 		10D20598205F3DF7008CDA1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D20597205F3DF7008CDA1C /* ViewController.swift */; };
 		10D2059B205F3DF7008CDA1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D20599205F3DF7008CDA1C /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1034DAF920694BF7007FA356 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = /Users/frankie/Projects/Truloc/Truloc/assets; sourceTree = "<absolute>"; };
+		1034DAFD206986E7007FA356 /* PinLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLocation.swift; sourceTree = "<group>"; };
 		10D20592205F3DF7008CDA1C /* Truloc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Truloc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D20595205F3DF7008CDA1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D20597205F3DF7008CDA1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,12 +101,14 @@
 		10D20594205F3DF7008CDA1C /* Truloc */ = {
 			isa = PBXGroup;
 			children = (
+				1034DAF920694BF7007FA356 /* assets */,
 				10D20595205F3DF7008CDA1C /* AppDelegate.swift */,
 				10D20597205F3DF7008CDA1C /* ViewController.swift */,
 				10D20599205F3DF7008CDA1C /* Main.storyboard */,
 				10D2059C205F3DF7008CDA1C /* Assets.xcassets */,
 				10D2059E205F3DF7008CDA1C /* LaunchScreen.storyboard */,
 				10D205A1205F3DF7008CDA1C /* Info.plist */,
+				1034DAFD206986E7007FA356 /* PinLocation.swift */,
 			);
 			path = Truloc;
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1034DAFA20694BF8007FA356 /* assets in Resources */,
 				10D205A0205F3DF7008CDA1C /* LaunchScreen.storyboard in Resources */,
 				10D2059D205F3DF7008CDA1C /* Assets.xcassets in Resources */,
 				10D2059B205F3DF7008CDA1C /* Main.storyboard in Resources */,
@@ -259,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1034DAFE206986E7007FA356 /* PinLocation.swift in Sources */,
 				10D20598205F3DF7008CDA1C /* ViewController.swift in Sources */,
 				10D20596205F3DF7008CDA1C /* AppDelegate.swift in Sources */,
 			);

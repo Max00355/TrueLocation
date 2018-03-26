@@ -14,25 +14,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var map: MKMapView!
 
-    @IBOutlet weak var yLabel: UILabel! // Lat
-    @IBOutlet weak var xLabel: UILabel! // Lng
-    @IBOutlet weak var zLabel: UILabel! // Altitude
-    
     var locationManager: CLLocationManager!
     var currentCoordinates: CLLocationCoordinate2D?
     var altitude: Double?
+    var savedLocation: PinLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startTrackingLocation()
     }
     
-    @IBAction func getCurrentLocation(_ sender: Any) {
-        print("Alt: \(altitude!)")
-        yLabel.text = currentCoordinates?.longitude.description
-        xLabel.text = currentCoordinates?.latitude.description
-        zLabel.text = altitude?.description
+    @IBAction func dropPinAtCurrentLocation(_ sender: Any) {
+        let thisLocation = CLLocation(latitude: self.currentCoordinates!.latitude, longitude: self.currentCoordinates!.longitude)
+        let radius: CLLocationDistance = 100
+        let region = MKCoordinateRegionMakeWithDistance(thisLocation.coordinate, radius , radius)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = self.currentCoordinates!
+        annotation.title = "Current Location"
+        annotation.subtitle = self.altitude?.description
+        self.map.setRegion(region, animated: true)
+        self.map.addAnnotation(annotation)
+        self.saveLocation(location: self.currentCoordinates!, altitude: self.altitude!)
+    }
     
+    func saveLocation(location: CLLocationCoordinate2D, altitude: Double) {
+        self.savedLocation = PinLocation(location: location, altitude: altitude)
     }
     
     func startTrackingLocation() {
