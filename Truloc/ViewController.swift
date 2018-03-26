@@ -18,9 +18,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var currentCoordinates: CLLocationCoordinate2D?
     var altitude: Double?
     var savedLocation: PinLocation?
+    var pinAnnotation: MKPointAnnotation?
+    var currentLocationAnnotation: MKPointAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let pinloc: PinLocation? = PinLocation.load()
+        if(pinloc != nil) {
+            let location = pinloc?.location
+            let subtitle = pinloc?.altitude?.description
+            self.pinAnnotation = self.buildAnnotation(location: location!, title: "Pin Drop", subtitle: subtitle)
+            self.map.addAnnotation(self.pinAnnotation!)
+        }
         self.startTrackingLocation()
     }
     
@@ -28,17 +37,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let thisLocation = CLLocation(latitude: self.currentCoordinates!.latitude, longitude: self.currentCoordinates!.longitude)
         let radius: CLLocationDistance = 100
         let region = MKCoordinateRegionMakeWithDistance(thisLocation.coordinate, radius , radius)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = self.currentCoordinates!
-        annotation.title = "Current Location"
-        annotation.subtitle = self.altitude?.description
+ 
+        if(self.pinAnnotation != nil) {
+            self.map.removeAnnotation(self.pinAnnotation!)
+        }
+        let annotation = self.buildAnnotation(location: self.currentCoordinates!, title: "Pin Drop", subtitle: altitude?.description)
+        self.pinAnnotation = annotation
         self.map.setRegion(region, animated: true)
         self.map.addAnnotation(annotation)
         self.saveLocation(location: self.currentCoordinates!, altitude: self.altitude!)
     }
     
+    func buildAnnotation(location: CLLocationCoordinate2D, title: String?, subtitle: String?) -> MKPointAnnotation {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location;
+        annotation.title = title
+        annotation.subtitle = subtitle
+        return annotation
+    }
+    
     func saveLocation(location: CLLocationCoordinate2D, altitude: Double) {
         self.savedLocation = PinLocation(location: location, altitude: altitude)
+        self.savedLocation!.save()
     }
     
     func startTrackingLocation() {
@@ -60,6 +80,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let altitude = locations.last!.altitude // Height above Sea Level
         self.currentCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.altitude = altitude
+        if(self.currentLocationAnnotation != nil) {
+            self.map.removeAnnotation(self.currentLocationAnnotation!)
+        }
+        let annotation = self.buildAnnotation(location: self.currentCoordinates!, title: "Current Location", subtitle: self.altitude?.description)
+        self.currentLocationAnnotation = annotation;
+        self.map.addAnnotation(annotation)
         print("\(latitude) \(longitude) \(altitude)")
     }
     
