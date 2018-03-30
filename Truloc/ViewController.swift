@@ -8,22 +8,22 @@
 import UIKit
 import MapKit
 import CoreLocation
-import SwiftyJSON
-import Alamofire
+import CoreMotion
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var floorLabel: UILabel!
-    @IBOutlet weak var elevationLabel: UILabel!
-    @IBOutlet weak var altitudeLabel: UILabel!
+    @IBOutlet weak var altitudeOffsetLabel: UILabel!
     
-    var locationManager: CLLocationManager!
+    let altimeter = CMAltimeter()
+    let locationManager = CLLocationManager()
+
     var currentCoordinates: CLLocationCoordinate2D?
-    var altitude: Double?
-    var elevation: Double?
-    var floor: Double?
+    var altitude: Double? = 0.0
+    var altitudeOffset: Double? = 0.0 // Used for when app is closed and restarted
     var savedLocation: PinLocation?
+    
     var pinAnnotation: MKPointAnnotation?
     var currentLocationAnnotation: MKPointAnnotation?
     
@@ -32,8 +32,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let pinloc: PinLocation? = PinLocation.load()
         if pinloc != nil {
             let location = pinloc?.location
-            let subtitle = pinloc?.floor?.rounded().description
-            self.pinAnnotation = self.buildAnnotation(location: location!, title: "Pin Drop", subtitle: subtitle)
+            self.altitudeOffset = pinloc?.altitudeOffset
+            
+            self.pinAnnotation = self.buildAnnotation(location: location!, title: "Pin Drop", subtitle: "")
             self.mapView.addAnnotation(self.pinAnnotation!)
         }
         self.mapView.showsUserLocation = true
@@ -49,11 +50,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.mapView.removeAnnotation(self.pinAnnotation!)
         }
         
-        let annotation = self.buildAnnotation(location: self.currentCoordinates!, title: "Pin Drop", subtitle: self.floor?.rounded().description)
+        let annotation = self.buildAnnotation(location: self.currentCoordinates!, title: "Pin Drop", subtitle: "")
         self.pinAnnotation = annotation
         self.mapView.setRegion(region, animated: true)
         self.mapView.addAnnotation(annotation)
-        self.saveLocation(location: self.currentCoordinates!, altitude: self.altitude!, floor: self.floor!)
+        self.altitudeOffset = 0.0
+        self.saveLocation()
     }
     
     func buildAnnotation(location: CLLocationCoordinate2D, title: String?, subtitle: String?) -> MKPointAnnotation {
@@ -64,16 +66,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         return annotation
     }
     
-    func saveLocation(location: CLLocationCoordinate2D, altitude: Double, floor: Double) {
-        self.savedLocation = PinLocation(location: location, altitude: altitude, floor: floor)
-        self.savedLocation!.save()
+    func saveLocation() {
+        if let coordinates = self.currentCoordinates {
+            self.savedLocation = PinLocation(location: coordinates, altitudeOffset: 0.0)
+            self.savedLocation!.save()
+        }
+    }
+    
+    func updateAltitudeOffset() { // This is needed because altitude starts from zero after restart
+        if let altitude = self.altitude {
+            let pinLocObj = PinLocation(altitudeOffset: altitude)
+            pinLocObj.save()
+        }
     }
     
     func startTrackingLocation() {
-        self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestAlwaysAuthorization()
+        self.relativeAltitudeManager()
         if CLLocationManager.locationServicesEnabled() {
             print("Started Getting Coordinates")
             self.locationManager.startUpdatingLocation()
@@ -82,48 +93,39 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
-    func getElevation() {
-        let latitude = self.currentCoordinates?.latitude.description
-        let longitude = self.currentCoordinates?.longitude.description
-        if latitude != nil && longitude != nil  {
-            let url = "https://api.open-elevation.com/api/v1/lookup?locations=" + latitude! + "," + longitude!
-            Alamofire.request(url).responseJSON { response in
-                print("ELEVATION")
-                if let data = response.result.value {
-                    let json = JSON(data)
-                    self.elevation = json["results"][0]["elevation"].double
-                    self.getFloor()
-                }
+    func updateFloorDifference() {
+        if let relativeAltitude = self.altitude, let altitudeOffset = self.altitudeOffset {
+            let floorDifference = ((relativeAltitude + altitudeOffset) / 3).rounded()
+            if floorDifference > 0 {
+                self.floorLabel.text = floorDifference.description + " Floors Down"
+            } else if floorDifference < 0 {
+                self.floorLabel.text = abs(floorDifference).description + " Floors Up"
+            } else {
+                self.floorLabel.text = "This Floor"
             }
+            self.altitudeOffsetLabel.text = self.altitudeOffset?.description
         }
     }
     
-    func getFloor() {
-        print("FLOOR")
-        if self.altitude != nil && self.elevation != nil {
-            print("ALTITUDE: " + self.altitude!.description)
-            print("ELEVATION: " + self.elevation!.description)
-            self.floor = (self.altitude! - self.elevation!) / 3
-            print("Floor: " + self.floor!.description)
+    func relativeAltitudeManager() { // For getting relative altitude updates
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            self.altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
+                (data, error) in
+                if let altitudeData = data {
+                    self.altitude = altitudeData.relativeAltitude.doubleValue
+                    self.updateAltitudeOffset()
+                    self.updateFloorDifference()
+                }
+            })
+        } else {
+            self.altitude = nil
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let latitude = locations.last!.coordinate.latitude
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { // For getting coordinate updates
+        let latitude = locations.last!.coordinate.latitude // Longitude
         let longitude = locations.last!.coordinate.longitude // Latitude
-        let altitude = locations.last!.altitude // Height above Sea Level
         self.currentCoordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        self.altitude = altitude
-        self.getElevation()
-        if let floor = self.floor {
-            self.mapView.userLocation.title = "Floor " + floor.rounded().description
-            self.floorLabel.text = "Floor: " + floor.description
-        }
-        self.altitudeLabel.text = "Altitude: " + altitude.description
-        if let elevation = self.elevation {
-            self.elevationLabel.text = "Elevation: " + elevation.description
-        }
-        print("\(latitude) \(longitude) \(altitude)")
     }
     
 }

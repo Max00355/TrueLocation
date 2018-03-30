@@ -11,46 +11,59 @@ import CoreLocation
 
 class PinLocation: NSObject {
     var location: CLLocationCoordinate2D?
-    var altitude: Double?
-    var floor: Double?
+    var altitudeOffset: Double?
     
-    init(location: CLLocationCoordinate2D, altitude: Double, floor: Double) {
+    init(location: CLLocationCoordinate2D) {
         self.location = location
-        self.altitude = altitude
-        self.floor = floor
+    }
+    
+    init(altitudeOffset: Double) {
+        self.altitudeOffset = altitudeOffset
+    }
+    
+    init(location: CLLocationCoordinate2D, altitudeOffset: Double) {
+        self.location = location
+        self.altitudeOffset = altitudeOffset
     }
     
     func save() {
         let db = UserDefaults.standard
-        let latitude: String
-        let longitude: String
-        let floor: String
-        latitude = self.location!.latitude.description
-        longitude = self.location!.longitude.description
-        floor = self.floor!.description
-        db.set(latitude, forKey: "pin_latitude")
-        db.set(longitude, forKey: "pin_longitude")
-        db.set(self.altitude, forKey: "pin_altitude")
-        db.set(floor, forKey: "pin_floor")
+        if let location = self.location, let altitudeOffset = self.altitudeOffset {
+            db.set(location.latitude.description, forKey: "pin_latitude")
+            db.set(location.longitude.description, forKey: "pin_longitude")
+            db.set(altitudeOffset.description, forKey: "pin_altitude_offset")
+        } else if let location = self.location {
+            db.set(location.latitude.description, forKey: "pin_latitude")
+            db.set(location.longitude.description, forKey: "pin_longitude")
+        } else if let altitudeOffset = self.altitudeOffset {
+            if db.string(forKey: "pin_altitude_offset") == "0.0" {
+                db.set(altitudeOffset.description, forKey: "pin_altitude_offset")
+            }
+        }
+        
+        
     }
     
     static func load() -> PinLocation? {
         let db = UserDefaults.standard
         let latitude: String?
         let longitude: String?
-        let altitude: String?
-        let floor: String?
+        var altitudeOffset: String?
+        
         latitude = db.string(forKey: "pin_latitude")
         longitude = db.string(forKey: "pin_longitude")
-        altitude = db.string(forKey: "pin_altitude")
-        floor = db.string(forKey: "pin_floor")
-        if(latitude == nil || longitude == nil || altitude == nil || floor == nil) {
+        altitudeOffset = db.string(forKey: "pin_altitude_offset")
+        
+        if latitude == nil || longitude == nil {
             return nil;
         }
         
+        if altitudeOffset == nil {
+            altitudeOffset = "0.0"
+        }
+        
         let location = CLLocationCoordinate2D(latitude: Double(latitude!) ?? 0.0 , longitude: Double(longitude!) ?? 0.0)
-        let real_altitude = Double(altitude!) ?? 0.0
-        let real_floor = Double(floor!) ?? 0.0
-        return PinLocation(location: location, altitude: real_altitude, floor: real_floor)
+        let realAltitudeOffset = Double(altitudeOffset!) ?? 0.0
+        return PinLocation(location: location, altitudeOffset: realAltitudeOffset)
     }
 }
